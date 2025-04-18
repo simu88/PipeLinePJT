@@ -1,0 +1,23 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: blog-scaler
+  namespace: aws9a
+spec:
+  scaleTargetRef:
+    name: aws9a-deploy-home
+  pollingInterval: 30
+  cooldownPeriod: 300
+  minReplicaCount: 1
+  maxReplicaCount: 10
+  triggers:
+    - type: cron
+      metadata:
+        timezone: Asia/Seoul
+        start: "0 9 * * *"
+        end: "0 18 * * *"
+        desiredReplicas: "3"
+    - type: cpu
+      metadata:
+        type: Utilization
+        value: "60"

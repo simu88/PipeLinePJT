@@ -15,7 +15,24 @@ spec:
     spec:
       containers:
         - name: aws9a-ctn-blog
-          image: hub.aws9.pri/aws9a/blog:1.0
+          image: hub.aws9.pri/aws9a/blog:1.1
+          resources:
+            limits:    # 최대 사용가능 용량량
+              cpu: 500m
+              memory: 128Mi
+            requests:   # 최소 보장
+              cpu: 250m
+              memory: 64Mi
+          ports:
+          - containerPort: 80
+            name: http
+          volumeMounts:
+          - name: aws9a-vol
+            mountPath: /data
+      volumes:
+        - name: aws9a-vol
+          persistentVolumeClaim:
+            claimName: aws9a-pvc
       imagePullSecrets:
         - name: harbor-secret
 ---
@@ -50,7 +67,24 @@ spec:
     spec:
       containers:
         - name: aws9a-ctn-shop
-          image: hub.aws9.pri/aws9a/shop:1.0
+          image: hub.aws9.pri/aws9a/shop:1.1
+          resources:
+            limits:    # 최대 사용가능 용량량
+              cpu: 500m
+              memory: 128Mi
+            requests:   # 최소 보장
+              cpu: 250m
+              memory: 64Mi
+          ports:
+          - containerPort: 80
+            name: http
+          volumeMounts:
+          - name: aws9a-vol
+            mountPath: /data
+      volumes:
+        - name: aws9a-vol
+          persistentVolumeClaim:
+            claimName: aws9a-pvc
       imagePullSecrets:
         - name: harbor-secret
 ---
@@ -85,9 +119,28 @@ spec:
     spec:
       containers:
         - name: aws9-ctn-news
-          image: hub.aws9.pri/aws9a/news:1.0
+          image: hub.aws9.pri/aws9a/news:1.1
+          resources:
+            limits:    # 최대 사용가능 용량량
+              cpu: 500m
+              memory: 128Mi
+            requests:   # 최소 보장
+              cpu: 250m
+              memory: 64Mi
+          ports:
+          - containerPort: 80
+            name: http
+          volumeMounts:
+          - name: aws9a-vol
+            mountPath: /data
+      volumes:
+        - name: aws9a-vol
+          persistentVolumeClaim:
+            claimName: aws9a-pvc
       imagePullSecrets:
         - name: harbor-secret
+
+    
 ---
 apiVersion: v1
 kind: Service
@@ -120,7 +173,24 @@ spec:
     spec:
       containers:
         - name: aws9-ctn-home
-          image: hub.aws9.pri/aws9a/home:1.0
+          image: hub.aws9.pri/aws9a/home:1.1
+          resources:
+            limits:    # 최대 사용가능 용량량
+              cpu: 500m
+              memory: 128Mi
+            requests:   # 최소 보장
+              cpu: 250m
+              memory: 64Mi
+          ports:
+          - containerPort: 80
+            name: http
+          volumeMounts:
+          - name: aws9a-vol
+            mountPath: /data
+      volumes:
+        - name: aws9a-vol
+          persistentVolumeClaim:
+            claimName: aws9a-pvc
       imagePullSecrets:
         - name: harbor-secret
 ---

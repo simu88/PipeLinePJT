@@ -1,9 +1,10 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: aws9-pvc
+  name: aws9a-pvc
+  namespace: aws9a
 spec: 
-  storageClassName: aws9-sc
+  storageClassName: aws9a-sc
   accessModes:
     - ReadWriteOnce
   resources:
