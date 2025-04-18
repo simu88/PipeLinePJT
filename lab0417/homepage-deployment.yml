@@ -1,0 +1,139 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aws9a-deploy-blog
+  namespace: aws9a
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: blog
+  template:
+    metadata:
+      labels:
+        app: blog
+    spec:
+      containers:
+        - name: aws9a-ctn-blog
+          image: hub.aws9.pri/aws9a/blog:1.0
+      imagePullSecrets:
+        - name: harbor-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aws9a-svc-blog
+  namespace: aws9a
+spec:
+  ports:
+    - name: aws9a-port-blog
+      port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app: blog
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aws9a-deploy-shop
+  namespace: aws9a
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shop
+  template:
+    metadata:
+      labels:
+        app: shop
+    spec:
+      containers:
+        - name: aws9a-ctn-shop
+          image: hub.aws9.pri/aws9a/shop:1.0
+      imagePullSecrets:
+        - name: harbor-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aws9a-svc-shop
+  namespace: aws9a
+spec:
+  ports:
+    - name: aws9a-port-shop
+      port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app: shop
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aws9a-deploy-news
+  namespace: aws9a
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: news
+  template:
+    metadata:
+      labels:
+        app: news
+    spec:
+      containers:
+        - name: aws9-ctn-news
+          image: hub.aws9.pri/aws9a/news:1.0
+      imagePullSecrets:
+        - name: harbor-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aws9a-svc-news
+  namespace: aws9a
+spec:
+  ports:
+    - name: aws9a-port-news
+      port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app: news
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aws9a-deploy-home
+  namespace: aws9a
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: home
+  template:
+    metadata:
+      labels:
+        app: home
+    spec:
+      containers:
+        - name: aws9-ctn-home
+          image: hub.aws9.pri/aws9a/home:1.0
+      imagePullSecrets:
+        - name: harbor-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aws9a-svc-home
+  namespace: aws9a
+spec:
+  ports:
+    - name: aws9a-port-home
+      port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app: home
