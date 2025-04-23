@@ -1,0 +1,54 @@
+namespace: aws9a
+imagePullSecret: harbor-secret
+pvcName: aws9a-pvc
+
+service:
+  type: ClusterIP
+  port: 80
+apps:
+  blog: 
+    replicaCount: 1
+    image:
+      repository: hub.aws9.pri/aws9a/blog
+      tag: "1.1"
+      pullPolicy: IfNotPresent
+  shop: 
+    replicaCount: 1
+    image:
+      repository: hub.aws9.pri/aws9a/shop
+      tag: "1.1"
+      pullPolicy: IfNotPresent
+  news: 
+    replicaCount: 1
+    image:
+      repository: hub.aws9.pri/aws9a/news
+      tag: "1.1"
+      pullPolicy: IfNotPresent
+  home: 
+    replicaCount: 1
+    image:
+      repository: hub.aws9.pri/aws9a/home
+      tag: "1.1"
+      pullPolicy: IfNotPresent
+
+resources:
+  limits: 
+    cpu: 500m
+    memory: 128Mi
+  requests:   # 최소 보장
+    cpu: 250m
+    memory: 64Mi
+
+keda:
+  pollingInterval: 30
+  cooldownPeriod: 300
+  minReplicaCount: 1
+  maxReplicaCount: 10
+  cron:
+    timezone: Asia/Seoul
+    start: "0 9 * * *"
+    end: "0 18 * * *"
+    desiredReplicas: "3"
+  cpu:
+    type: Utilization
+    value: "60"

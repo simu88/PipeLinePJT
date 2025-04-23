@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>Shop - Book Store</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff8f0;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #ff7043;
+      color: white;
+      padding: 25px 0;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    .products {
+      max-width: 900px;
+      margin: 40px auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 0 20px;
+    }
+
+    .product {
+      flex: 1 1 250px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .product h2 {
+      margin-top: 0;
+      color: #ff7043;
+    }
+
+    .product p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    footer {
+      text-align: center;
+      color: #aaa;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Book Shop</h1>
+</header>
+
+<div class="products">
+  <div class="product">
+    <h2>한 권으로 배우는 도커 & 쿠버네티스</h2>
+    <p>컨테이너 개념부터 쿠버네티스를 활용한 배포까지</p>
+  </div>
+  <div class="product">
+    <h2>쿠버네티스 교과서</h2>
+    <p>기초부터 운영까지, 실전에 강한 쿠버네티스 사용법!</p>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 AWS9-A Book Shop
+</footer>
+
+</body>
+</html>

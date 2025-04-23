@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: {{ .Release.Name }}-aws9-svc
+    labels:
+      app: {{ .Chart.Name }}
+spec:
+  type: {{ .Values.service.type }}
+  selector:
+    app: {{ .Chart.Name }}
+  ports:
+  - protocol: TCP
+    targetPort: 80
+    port: {{ .Values.service.port }}
