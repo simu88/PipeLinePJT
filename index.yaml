@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  aws9a-helm:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-04-24T15:49:25.998185792+09:00"
+    description: A Helm chart for Kubernetes
+    digest: 17cb29d6d17de2d8e92b600fd09f57bc4ffa2f2d0cb0b8c5fa963007264ec7e7
+    name: aws9a-helm
+    type: application
+    urls:
+    - aws9a-helm-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-04-24T15:49:25.996974624+09:00"
